@@ -1,0 +1,16 @@
+services:
+  flox:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        HELLO_BUILD_ARG: "Hello from docker-compose build args"
+    environment:
+      - HELLO_MESSAGE=${HELLO_MESSAGE:-}
+      - HELLO_COMPOSE_ENV="Hello from docker-compose environment"
+      - COMPOSE_ONLY="Set only in compose"
+      - COMPOSE_PASS="Passing through ${COMPOSE_PASS}"
+      - COMPOSE_PASS_VAL=${COMPOSE_PASS_VAL}
+      - COMPOSE_PASS_NO_VAL
+    env_file:
+      - docker.env
